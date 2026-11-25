@@ -24,8 +24,9 @@
           <p class="eyebrow">A fair share for everyone</p>
           <h1 id="main-heading">Split bills, not friendships.</h1>
           <p class="intro">
-            Enter the bill amount and number of people. SplitMate calculates
-            everyone’s exact share, including the leftover paisa.
+            Enter the bill, an optional service charge, and the number of
+            people. SplitMate calculates everyone’s exact share, including
+            the leftover paisa.
           </p>
         </div>
 
@@ -56,6 +57,23 @@
               </span>
             </label>
 
+            <label for="service-charge">
+              Service charge
+              <span class="field-shell percentage-field">
+                <input
+                  id="service-charge"
+                  name="serviceCharge"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  inputmode="decimal"
+                  value="0"
+                  aria-describedby="form-error"
+                />
+                <span class="percentage-suffix" aria-hidden="true">%</span>
+              </span>
+            </label>
+
             <label for="people-count">
               Number of people
               <input
@@ -81,6 +99,11 @@
           <p id="form-error" class="form-error" role="alert" hidden></p>
 
           <div id="result" class="result" aria-live="polite" hidden>
+            <div class="charge-breakdown" aria-label="Bill breakdown">
+              <p><span>Original bill</span><strong id="original-amount">PKR 0.00</strong></p>
+              <p><span id="service-charge-label">Service charge (0.00%)</span><strong id="service-charge-amount">PKR 0.00</strong></p>
+              <p class="final-total-row"><span>Final total</span><strong id="final-total">PKR 0.00</strong></p>
+            </div>
             <p class="result-label">Each person pays</p>
             <p id="share-amount" class="share-amount">PKR 0.00</p>
             <p id="split-detail" class="split-detail"></p>

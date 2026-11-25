@@ -204,6 +204,22 @@ input:focus {
   box-shadow: none;
 }
 
+.percentage-field input {
+  text-align: right;
+}
+
+.percentage-suffix {
+  height: 52px;
+  display: grid;
+  place-items: center;
+  padding: 0 16px;
+  border-left: 1px solid var(--line);
+  color: var(--navy);
+  background: #f4f5f7;
+  font-size: 15px;
+  font-weight: 800;
+}
+
 .currency-prefix {
   height: 52px;
   display: grid;
@@ -279,6 +295,45 @@ input:focus {
   border-radius: 14px;
   background: var(--navy);
   text-align: center;
+}
+
+.charge-breakdown {
+  display: grid;
+  gap: 11px;
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: left;
+}
+
+.charge-breakdown p {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.charge-breakdown span {
+  color: #cbd2df;
+}
+
+.charge-breakdown strong {
+  color: var(--white);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.charge-breakdown .final-total-row {
+  padding-top: 11px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.charge-breakdown .final-total-row strong {
+  color: var(--orange);
 }
 
 .result-label {
