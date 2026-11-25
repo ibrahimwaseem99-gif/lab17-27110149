@@ -10,6 +10,8 @@ const finalTotal = document.querySelector("#final-total");
 const shareAmount = document.querySelector("#share-amount");
 const splitDetail = document.querySelector("#split-detail");
 const formError = document.querySelector("#form-error");
+const copyButton = document.querySelector("#copy-results");
+const copyFeedback = document.querySelector("#copy-feedback");
 
 function clearError() {
   formError.textContent = "";
@@ -137,6 +139,7 @@ form.addEventListener("submit", (event) => {
 form.addEventListener("reset", () => {
   clearError();
   result.hidden = true;
+  copyFeedback.textContent = "";
   originalAmount.textContent = "PKR 0.00";
   serviceChargeLabel.textContent = "Service charge (0.00%)";
   serviceChargeAmount.textContent = "PKR 0.00";
@@ -145,9 +148,32 @@ form.addEventListener("reset", () => {
   splitDetail.textContent = "";
 });
 
+copyButton.addEventListener("click", async () => {
+  const lines = [
+    `Original bill: ${originalAmount.textContent}`,
+    `Service charge: ${serviceChargeAmount.textContent}`,
+    `Total bill: ${finalTotal.textContent}`,
+    `Number of people: ${peopleInput.value}`,
+    `Amount per person: ${shareAmount.textContent}`,
+  ];
+
+  if (splitDetail.textContent) {
+    lines.push(`Split details: ${splitDetail.textContent}`);
+  }
+
+  try {
+    await navigator.clipboard.writeText(lines.join("\n"));
+    copyFeedback.textContent = "Results copied to clipboard.";
+  } catch {
+    copyFeedback.textContent =
+      "Could not copy results. Check clipboard permissions and try again.";
+  }
+});
+
 for (const input of [billInput, serviceChargeInput, peopleInput]) {
   input.addEventListener("input", () => {
     clearError();
     result.hidden = true;
+    copyFeedback.textContent = "";
   });
 }

@@ -359,6 +359,37 @@ input:focus {
   line-height: 1.5;
 }
 
+.copy-button {
+  width: 100%;
+  min-height: 46px;
+  margin-top: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 8px;
+  color: var(--white);
+  background: transparent;
+  font-weight: 800;
+  cursor: pointer;
+  transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.copy-button:hover {
+  border-color: var(--orange);
+  color: var(--navy);
+  background: var(--orange);
+}
+
+.copy-button:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.copy-feedback {
+  margin: 9px 0 0;
+  color: #dce3ee;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
 .about {
   display: grid;
   grid-template-columns: 1fr 1fr;
